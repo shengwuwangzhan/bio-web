@@ -24,12 +24,14 @@
   background-color: #EDEDED;
   text-align: center;
 }
+
+
 #maininside {
   position: relative;
   top: 120px;
   left:30em;
   height: 800px;
-  width:45em;
+  width:1000px;
   text-align: center;
   border:0px;
 }
@@ -43,6 +45,17 @@
   line-height: 40px;
 
 }
+#leftbuttcg {
+  width:14em;
+  height:40px;
+  border: 10px;
+  background-color: #316B93;
+  border:0px;
+  text-align: center;
+  line-height: 40px;
+
+}
+
 
 .leftlist {
 
@@ -56,6 +69,13 @@
   position: absolute;
 }
 .leftestside {
+  height: 40px;
+  width: 5px;
+  float: left;
+
+}
+
+#leftestsidecg {
   height: 40px;
   width: 5px;
   float: left;

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #ques {
-  width:30em;
+  width:40em;
   height: auto;
   font-size: 18px;
   color: #333333;
@@ -15,9 +15,8 @@
 #ans {
   width:40em;
   height: 30em;
-  position: relative;
-  left: 20px;
-  top:53px;
+  position: absolute;
+  top:350px;
 }
 
 .chicer {
@@ -30,54 +29,53 @@
   color: black;
   font-size: 13px;
   position: relative;
-  top:-5px;
+  top:-9px;
 }
 #choice_B {
   color: black;
   position: relative;
-  top:-5px;
+  top:-9px;
   font-size: 13px;
 }
 #choice_C {
   position: relative;
-  top:-5px;
+  top:-9px;
   font-size: 13px;
   color: black;
 }
 #choice_D
  {
    position: relative;
-   top:-5px;
+   top:-9px;
  font-size: 13px;
   color: black;
 }
 
 
 #getnext {
-  top : 41px;
-  left: 130px;
+  top : 300px;
+  left: 120px;
   width: 89px;
   height: 40px;
   background-color: #316B93;
   line-height: 40px;
   font-size: 14px;
   text-align: center;
-  position: relative;
+  position: absolute;
 }
 #getbefore {
   height: 40px;
   line-height: 40px;
-  top : 82px;
+  top : 300px;
   width: 89px;
-  left : 20px;
   background-color: #EDEDED;
   font-size: 14px;
   text-align: center;
-  position: relative;
+  position: absolute;
 }
 #anstitle {
   background-color:#316B93;
-  height: 89px;
+  height: 50px;
   width:35em;
 
   line-height: 80px;
@@ -85,15 +83,16 @@
 #ansex {
   background-color: #EDEDED;
   width : 35em;
-  height: 15em;
+  height: 10em;
   position: relative;
 
 }
 
 #character {
   left: 20px;
-  font-size:18px;
+  font-size:16px;
   color: #ffffff;
+  top: -15px;
   position: relative;
 }
 
@@ -101,7 +100,7 @@
 #anspos {
   position: relative;
   top:24px;
-  font-size: 24px;
+  font-size: 14px;
   left:20px;
 }
 

@@ -13,23 +13,30 @@
            var rightnum = 0;
            var wrongnum = 0;
            var size = 0; //监控数量
+           var itemsize = 0;
            var url =  window.location.href ;
-           var analyse; // 答案的解析
+           var analysis; // 答案的解析
            var right_url = "BiomaterialSafe";//题型的url
            $(document).ready(function(){//获取url
              var reg = /id=\d/;
              url=(reg.exec(url));
              if (url == "id=1") {
-               right_url = "AccidentHandling";
-             } else if (url == "id=2") {
                right_url = "BasicSafe";
-             } else if (url == "id=3") {
-               right_url = "BiomaterialSafe";
-             } else if (url == "id=4") {
+
+             } else if (url == "id=2") {
                right_url = "InstrumentSafe";
-             } else {
+
+             } else if (url == "id=3") {
                right_url = "ReagentSafe";
+
+             } else if (url == "id=4") {
+               right_url = "BiomaterialSafe";
+
+             } else {
+               right_url = "AccidentHandling";
+
              }
+             console.log(right_url);
 
 
 
@@ -46,6 +53,7 @@
 
            function count(s) {
              $("#correctans").text(ans);
+             $("#analysis").text(analysis);
              console.log(ans);
              if (ans == "正确"){
                ans = "A";
@@ -94,10 +102,36 @@
 
            }
 
+           $(document).ready(function(){
+
+              $.ajax({
+                type : "GET",
+                url : $SCRIPT_ROOT + '/question_info',
+                dataType : "json",
+                success : function (data) {
+                  console.log(right_url);
+                  console.log(itemsize);
+                  if (right_url == "BasicSafe") {
+                    itemsize = data.BasicSafe;
+                  } else if (right_url == "InstrumentSafe") {
+                    itemsize = data.InstrumentSafe;
+                  } else if (right_url == "ReagentSafe") {
+                    itemsize = data.ReagentSafe;
+                  } else if (right_url == "BiomaterialSafe") {
+                    itemsize = data.BiomaterialSafe;
+                  } else if (right_url == "AccidentHandling"){
+                    itemsize = data.AccidentHandling;
+                  }
+                }
+              })
+
+
+           });
+
 
            function change() {
              $("#correctans").text("");
-
+             $('#analysis').text("");
              $.ajax( {
                type : "POST",
                url : $SCRIPT_ROOT + '/question',
@@ -111,20 +145,21 @@
                  size = data.question.choices.length;
                  rightans = data.question.description;
                  console.log("length is " + size);
-                 if (data.question.choices[3] != "") {
+                 analysis = data.question.analysis;
+                 if (data.question.choices[3] != undefined) {
                    $("#choice_but_C").show();
                    $("#choice_but_D").show();
-                  //alert(data.question.description);
                     $("#choice_A").css("color","#333333");
                     $("#choice_B").css("color","#333333");
                     $("#choice_C").css("color","#333333");
                     $("#choice_D").css("color","#333333");
-                    $("#choice_A").text(data.question.choices[0]);
-                    $("#choice_B").text (data.question.choices[1]);
-                    $("#choice_C").text( data.question.choices[2]);
-                    if (typeof(data.question.choices[3]) != "undefined") {
+                    $("#choice_A").text('A. '+data.question.choices[0]);
+                    $("#choice_B").text ('B. '+data.question.choices[1]);
+                    $("#choice_C").text( 'C. '+data.question.choices[2]);
+
+                    if (typeof(data.question.choices[3]) != undefined) {
                       $("#choice_but_D").show();
-                      $("#choice_D").text(data.question.choices[3]);
+                      $("#choice_D").text('D. '+data.question.choices[3]);
                     }
                     else {
                       $("#choice_but_D").hide();
@@ -141,8 +176,8 @@
                         ans = "B";
                       }
                       console.log(ans);
-                      $("#choice_A").text("正确");
-                      $("#choice_B").text("错误");
+                      $("#choice_A").text('A. '+"正确");
+                      $("#choice_B").text('B. '+"错误");
                       $("#choice_but_C").hide();
                       $("#choice_but_D").hide();
                     }
@@ -252,7 +287,8 @@
     <script type="text/javascript">
     $(document).ready(function(){
       $("#getnext").click(function(){
-        if (item < 100)
+        console.log(itemsize);
+        if (item < itemsize)
           item ++;
         else {
           alert("已经是最后一题");
@@ -283,6 +319,13 @@
            <span id = "correctans">
            </span>
           </strong>
+          </br>
+          </br>
+          </br>
+
+          <div id = "analysis" style = "margin-left:20px">
+
+          </div>
 
 
          </div>

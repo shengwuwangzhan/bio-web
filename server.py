@@ -3,14 +3,11 @@
 
 """ server. """
 
-
-from flask import Flask, jsonify, abort, request, make_response,render_template, redirect
-
-
+from flask import Flask, jsonify, abort, request, make_response, render_template, redirect
 
 from flask_sqlalchemy import SQLAlchemy
 
-MULTIPLE_CHOICE_QUESTION_START_ID = 69
+
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
@@ -35,7 +32,7 @@ class Question(db.Model):
         question["analysis"] = self.analysis
         question["choices"] = []
         for choice in [self.choice_0, self.choice_1, self.choice_2, self.choice_3]:
-            if choice is not None:
+            if (choice is not None) and (choice != ""):
                 question["choices"].append(choice)
         question["answer"] = "ABCD"[self.answer]
         return question
@@ -102,6 +99,27 @@ def test2():
 def test3():
     return render_template('3.html')
 
+
+
+@app.route("/word&id=1")
+def word1():
+    return render_template('word1.html')
+@app.route("/word&id=2")
+def word2():
+    return render_template('word2.html')
+@app.route("/word&id=3")
+def word3():
+    return render_template('word3.html')
+@app.route("/word&id=4")
+def word4():
+    return render_template('word4.html')
+@app.route("/word&id=5")
+def word5():
+    return render_template('word5.html')
+
+
+
+
 @app.route("/done1")
 def done1():
     return redirect('/static/video/1.mp4')
@@ -126,6 +144,20 @@ def done4():
 def done5():
     return redirect('/static/video/5.mp4')
 
+
+
+
+
+
+
+
+
+@app.route("/question_info", methods=["GET"])
+def question_statis_info():
+    info = {}
+    for info_t in db.session.query(Question.type, db.func.count(Question.id)).group_by(Question.type).all():
+        info[info_t[0]] = info_t[1]
+    return jsonify(info)
 
 @app.route("/question", methods=["POST"])
 def find_question():
@@ -153,5 +185,6 @@ def not_found(error):
 if __name__ == '__main__':
     app.run(
         threaded = True,
-        port = 5023
+        port = 5045
+
     )
