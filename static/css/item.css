@@ -1,0 +1,129 @@
+@charset "UTF-8";
+#ques {
+  width:30em;
+  height: auto;
+  font-size: 18px;
+  color: #333333;
+}
+
+#choices {
+  top : 20px;
+  height: auto;
+  position: relative;
+}
+
+#ans {
+  width:40em;
+  height: 30em;
+  position: relative;
+  left: 20px;
+  top:53px;
+}
+
+.chicer {
+  color:  #EDEDED;
+  font-size: 40px;
+  height: 40px;
+}
+
+#choice_A {
+  color: black;
+  font-size: 13px;
+  position: relative;
+  top:-5px;
+}
+#choice_B {
+  color: black;
+  position: relative;
+  top:-5px;
+  font-size: 13px;
+}
+#choice_C {
+  position: relative;
+  top:-5px;
+  font-size: 13px;
+  color: black;
+}
+#choice_D
+ {
+   position: relative;
+   top:-5px;
+ font-size: 13px;
+  color: black;
+}
+
+
+#getnext {
+  top : 41px;
+  left: 130px;
+  width: 89px;
+  height: 40px;
+  background-color: #316B93;
+  line-height: 40px;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+}
+#getbefore {
+  height: 40px;
+  line-height: 40px;
+  top : 82px;
+  width: 89px;
+  left : 20px;
+  background-color: #EDEDED;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+}
+#anstitle {
+  background-color:#316B93;
+  height: 89px;
+  width:35em;
+
+  line-height: 80px;
+}
+#ansex {
+  background-color: #EDEDED;
+  width : 35em;
+  height: 15em;
+  position: relative;
+
+}
+
+#character {
+  left: 20px;
+  font-size:18px;
+  color: #ffffff;
+  position: relative;
+}
+
+
+#anspos {
+  position: relative;
+  top:24px;
+  font-size: 24px;
+  left:20px;
+}
+
+span#choice_A:hover {
+  color:#316B93;
+  font-size: 20px;
+}
+
+span#choice_B:hover {
+  color:#316B93;
+
+  font-size: 20px;
+}
+
+span#choice_C:hover {
+  color:#316B93;
+
+  font-size: 20px;
+}
+
+span#choice_D:hover {
+  color:#316B93;
+
+  font-size: 20px;
+}
